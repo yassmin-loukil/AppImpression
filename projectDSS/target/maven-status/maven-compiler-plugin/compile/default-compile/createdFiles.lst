@@ -1,0 +1,4 @@
+tn\iit\dao\UserDao.class
+tn\iit\model\User.class
+tn\iit\web\LoginController.class
+tn\iit\util\HibernateUtil.class
