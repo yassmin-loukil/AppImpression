@@ -127,7 +127,31 @@ public class UserDao {
 		}
 		return user;
 	}
+	
+	public int getIDByUserName(String username) {
 
+		Session s = HibernateUtil.getSessionFactory().openSession();
+		s.beginTransaction();
+		int id = (int) s.createQuery("select id FROM User U WHERE U.username = :username")
+				.setParameter("username", username).getSingleResult();
+		s.getTransaction().commit();
+		s.close();
+		return id;
+	}
+
+	
+	public String getNomByID(int idEnseignant) {
+
+		Session s = HibernateUtil.getSessionFactory().openSession();
+		s.beginTransaction();
+		String nom = (String) s.createQuery("select username FROM User U WHERE U.id = :idEnseignant")
+				.setParameter("idEnseignant", idEnseignant).getSingleResult();
+		s.getTransaction().commit();
+		s.close();
+		return nom;
+	}
+
+	
 	public List<User> getAllUser() {
 
 

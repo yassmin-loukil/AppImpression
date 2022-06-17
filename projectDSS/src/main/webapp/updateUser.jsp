@@ -19,10 +19,10 @@
 				<form action="UserController" method="POST">
 					<fieldset>
 						<legend>
-							Update Employe :
-							<%=p.getUsername()%></legend>
+							Modifier Cordonnée :
+							<%=p.getLastName()+" "+p.getFirstName()%></legend>
 							<div class="form-group">
-							<label for="exampleInputEmail1">Id</label> <input readonly="readonly" type="text"
+							<input hidden="true" readonly="readonly" type="text"
 								class="form-control" name="id"
 								value="<%=p.getId()%>" id="exampleInputEmail1"
 								placeholder="employe's last name">

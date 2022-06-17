@@ -7,23 +7,47 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "users")
-public class Matiere implements Serializable  {
-	 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+@Table(name = "matieres")
+public class Matiere implements Serializable {
 
-    @Column(name = "first_name")
-    private String firstName;
+	private static final long serialVersionUID = 1L;
 
-	public Matiere(int id, String firstName) {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+
+	@Column( name="id_enseignant")
+	private int idEnseignant ;
+ 
+	
+	public int getIdEnseignant() {
+		return idEnseignant;
+	}
+
+	public void setIdEnseignant(int idEnseignant) {
+		this.idEnseignant = idEnseignant;
+	}
+
+	@Column(name = "nom_matiere")
+	private String nomMatiere;
+
+	public Matiere(int id, String nomMatiere) {
 		super();
 		this.id = id;
-		this.firstName = firstName;
+		this.nomMatiere = nomMatiere;
+	}
+
+	public Matiere(int id,int idEnseignant, String nomMatiere) {
+		super();
+		this.id = id;
+		this.idEnseignant = idEnseignant;
+		this.nomMatiere = nomMatiere;
 	}
 
 	public Matiere() {
@@ -39,13 +63,12 @@ public class Matiere implements Serializable  {
 		this.id = id;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getNomMatiere() {
+		return nomMatiere;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setNomMatiere(String nomMatiere) {
+		this.nomMatiere = nomMatiere;
 	}
 
-  
 }

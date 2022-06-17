@@ -3,11 +3,16 @@ package tn.iit.util;
 import java.util.Properties;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
+import tn.iit.model.DemandeTirage;
+import tn.iit.model.Document;
+import tn.iit.model.Matiere;
 import tn.iit.model.User;
 
 
@@ -41,11 +46,16 @@ public class HibernateUtil {
 
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(User.class);
+                configuration.addAnnotatedClass(Matiere.class);
+                configuration.addAnnotatedClass(Document.class);
+                configuration.addAnnotatedClass(DemandeTirage.class);
+
+
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties()).build();
-                System.out.println("Hibernate Java Config serviceRegistry created");
-                sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+               System.out.println("Hibernate Java Config serviceRegistry created");
+             sessionFactory = configuration.buildSessionFactory(serviceRegistry);
                 return sessionFactory;
 
             } catch (Exception e) {
